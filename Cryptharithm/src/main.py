@@ -35,7 +35,7 @@ def permutation(numbers, r=None):
 
 # Fungsi untuk mengeluarkan solusi
 def solution(filename):
-    f = open("TestData/" + filename, 'r')
+    f = open("test/" + filename, 'r')
 
     letters = set()
     numbers = list(range(10))
@@ -72,14 +72,14 @@ def solution(filename):
 
 
 # Main program
-start_time = time.process_time()
 filename = input("Masukkan nama file: ")
 
+start_time = time.process_time()
 # Ambil Solusi dan jumlah percobaan
 solution, count = solution(filename)
 
 print("\nSolusi: ")
-f = open("TestData/" + filename, 'r')
+f = open("test/" + filename, 'r')
 
 # Masukkan kata per line ke dalam wordlist untuk diproses
 wordlist = []
