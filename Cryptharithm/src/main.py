@@ -40,7 +40,7 @@ def solution(filename):
     letters = set()
     numbers = list(range(10))
 
-    added_numbers = []
+    operand = []
     result = []
     isLine = False
 
@@ -48,7 +48,7 @@ def solution(filename):
     for line in f.read().splitlines():
         print(line)
         if not(isLine) and (line != "------"):
-            added_numbers.append(line.replace('+', ''))
+            operand.append(line.replace('+', ''))
         elif line == "------":
             isLine = True
         else:
@@ -65,8 +65,9 @@ def solution(filename):
     for p in permutation(numbers, len(list(letters))):
         count += 1
         solution = dict(zip(letters, p))
-        sumOfNumbers = sum(valueOfWord(word, solution) for word in added_numbers)
+        sumOfNumbers = sum(valueOfWord(word, solution) for word in operand)
         sumOfResult = sum(valueOfWord(word, solution) for word in result)
+        # Cek apakah hasil sama dan apakah panjang string angka sama dengan string huruf
         if sumOfNumbers == sumOfResult and len(str(sumOfResult)) == len(result[0]):
             return solution, count
 
@@ -98,5 +99,9 @@ for i in range(len(wordlist)):
     else:
         print(valueOfWord(wordlist[i],solution))
 
-print("\nBanyak percobaan:", count)
+print()
+for key, value in solution.items():
+    print(key + " =", str(value) + ",", end=" ")
+
+print("\n\nBanyak percobaan:", count)
 print("\nExecution Time: ", (time.process_time()-start_time), "seconds")
