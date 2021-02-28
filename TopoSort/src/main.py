@@ -14,18 +14,34 @@ def initializeGraph(filename):
 
     return grafKuliah
 
+def recursiveSortHelper(seen, solution, graf, node):
+    for adjacent in graf[node]:
+        if adjacent not in seen:
+            seen.add(adjacent)
+            recursiveSortHelper(seen, solution, graf, adjacent)
+    if node not in solution:
+        solution.append(node)
+
+def topoSort(graf):
+    solution = list()
+    seen = set()
+
+    for key in graf.keys():
+        recursiveSortHelper(seen, solution, graf, key)
+
+    return solution
+
+def printSolution(solution):
+    print("\nRencana Kuliah:")
+    for i in range(len(solution)):
+        print(str(i+1)+".", solution[i])
 
 
 
 filename = input("Masukkan nama berkas: ")
 
 grafKuliah = initializeGraph(filename)
+    
+solution = topoSort(grafKuliah)
 
-solution = list()
-
-for key,value in grafKuliah.copy().items():
-    if len(value) == 0:
-        solution.append(key)
-        grafKuliah.pop(key)
-
-print(solution)
+printSolution(solution)
