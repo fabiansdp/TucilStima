@@ -23,17 +23,14 @@ def initializeGraph(filename):
 # Fungsi rekursif untuk pengecekan node di toposort
 def recursiveSortHelper(visited, solution, graf, node):
     # Loop adjacency list di setiap node/key
-    # Jika node tidak memiliki node adjacent, tambah ke visited
     # Jika memiliki adjacency list, loop dan apabila tidak ada di visited maka
     # panggil fungsi rekursif untuk pengecekan node adjacent tersebut
+    # Jika node tidak memiliki node adjacent, langsung cek apakah node ada di solusi
     # Jika node tidak ada di solusi, append ke list solution
-    if len(graf[node]) == 0:
-        visited.add(node)
-    else:
-        for adjacent in graf[node]:
-            if adjacent not in visited:
-                visited.add(adjacent)
-                recursiveSortHelper(visited, solution, graf, adjacent)
+    for adjacent in graf[node]:
+        if adjacent not in visited:
+            visited.add(adjacent)
+            recursiveSortHelper(visited, solution, graf, adjacent)
 
     if node not in solution:
         solution.append(node)
@@ -64,3 +61,5 @@ filename = input("Masukkan nama berkas: ")
 grafKuliah = initializeGraph(filename) # Inisialisasi graf
 solution = topoSort(grafKuliah) # list solusi
 printSolution(solution) # print solusi
+
+empty = []
