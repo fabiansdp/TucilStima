@@ -12,7 +12,9 @@ def initializeGraph(filename):
 
     # Baca setiap line, matkul pertama jadi key
     # dan sisanya menjadi value berbentuk array
+    print("Isi Berkas:")
     for line in f.read().splitlines():
+        print(line)
         arrayKuliah = line.replace(".", "").replace(" ", "").split(",")
         grafKuliah[arrayKuliah[0]] = arrayKuliah[1:]
 
@@ -61,5 +63,3 @@ filename = input("Masukkan nama berkas: ")
 grafKuliah = initializeGraph(filename) # Inisialisasi graf
 solution = topoSort(grafKuliah) # list solusi
 printSolution(solution) # print solusi
-
-empty = []
