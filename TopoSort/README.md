@@ -5,8 +5,8 @@ Program Python untuk melakukan Topological Sort yang merupakan penerapan algorit
 
 1. Mengecek simpul yang dimasukkan sebagai parameter.
 2. Mengiterasi setiap simpul tetangga yang ada di list tetangga:
-⋅⋅⋅Jika simpul tetangga belum pernah dikunjungi, masukkan ke dalam himpunan simpul lalu panggil fungsi recursiveSortHelper untuk mengecek simpul tersebut.
-⋅⋅⋅Jika pernah dikunjungi, lompati.
+    a. Jika simpul tetangga belum pernah dikunjungi, masukkan ke dalam himpunan simpul lalu panggil fungsi recursiveSortHelper untuk mengecek simpul tersebut.
+    b. Jika pernah dikunjungi, lompati.
 3. Jika simpul yang dimasukkan sebagai parameter belum di dalam list solusi, masukkan simpul tersebut ke dalam list.
 
 
